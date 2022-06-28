@@ -18,6 +18,7 @@ namespace UdemyMVC.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            ViewData["email"] = "dudabyte@duda.com";
 
             return View();
         }
