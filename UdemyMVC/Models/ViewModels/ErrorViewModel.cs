@@ -1,6 +1,6 @@
 using System;
 
-namespace UdemyMVC.Models
+namespace UdemyMVC.Models.ViewModels
 {
     public class ErrorViewModel
     {

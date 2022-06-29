@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using UdemyMVC.Models;
+using UdemyMVC.Models.ViewModels;
 
 namespace UdemyMVC.Controllers
 {
@@ -17,7 +17,7 @@ namespace UdemyMVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Salles web MVC app from c# Couser";
             ViewData["email"] = "dudabyte@duda.com";
 
             return View();
