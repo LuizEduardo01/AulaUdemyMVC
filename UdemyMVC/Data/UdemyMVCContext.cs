@@ -14,6 +14,11 @@ namespace UdemyMVC.Data
         {
         }
 
-        public DbSet<UdemyMVC.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+                
+        public DbSet<Seller> Saller { get; set; }
+
+        public DbSet<SalesRecord> SalesRecords { get; set; }
     }
+
 }
