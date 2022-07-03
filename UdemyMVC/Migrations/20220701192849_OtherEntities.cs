@@ -9,7 +9,7 @@ namespace UdemyMVC.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Saller",
+                name: "Seller",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -22,9 +22,9 @@ namespace UdemyMVC.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Saller", x => x.Id);
+                    table.PrimaryKey("PK_Seller", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Saller_Department_DepartmentId",
+                        name: "FK_Seller_Department_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Department",
                         principalColumn: "Id",
@@ -32,7 +32,7 @@ namespace UdemyMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SalesRecords",
+                name: "SalesRecord",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -40,37 +40,37 @@ namespace UdemyMVC.Migrations
                     Date = table.Column<DateTime>(nullable: false),
                     Amonth = table.Column<double>(nullable: false),
                     Status = table.Column<int>(nullable: false),
-                    SallerId = table.Column<int>(nullable: true)
+                    SellerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SalesRecords", x => x.Id);
+                    table.PrimaryKey("PK_SalesRecord", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SalesRecords_Saller_SallerId",
-                        column: x => x.SallerId,
-                        principalTable: "Saller",
+                        name: "FK_SalesRecord_Seller_SellerId",
+                        column: x => x.SellerId,
+                        principalTable: "Seller",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SalesRecords_SallerId",
-                table: "SalesRecords",
+                name: "IX_SalesRecord_SellerId",
+                table: "SalesRecord",
                 column: "SallerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Saller_DepartmentId",
-                table: "Saller",
+                name: "IX_Seller_DepartmentId",
+                table: "Seller",
                 column: "DepartmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SalesRecords");
+                name: "SalesRecord");
 
             migrationBuilder.DropTable(
-                name: "Saller");
+                name: "Seller");
         }
     }
 }

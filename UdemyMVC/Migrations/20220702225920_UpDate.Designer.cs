@@ -9,8 +9,8 @@ using UdemyMVC.Data;
 namespace UdemyMVC.Migrations
 {
     [DbContext(typeof(UdemyMVCContext))]
-    [Migration("20220701192849_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20220702225920_UpDate")]
+    partial class UpDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,15 +75,15 @@ namespace UdemyMVC.Migrations
 
             modelBuilder.Entity("UdemyMVC.Models.SalesRecord", b =>
                 {
-                    b.HasOne("UdemyMVC.Models.Seller", "Seller")
+                    b.HasOne("UdemyMVC.Models.Seller")
                         .WithMany("Sales")
                         .HasForeignKey("SellerId");
                 });
 
             modelBuilder.Entity("UdemyMVC.Models.Seller", b =>
                 {
-                    b.HasOne("UdemyMVC.Models.Department")
-                        .WithMany("Seller")
+                    b.HasOne("UdemyMVC.Models.Department", "Department")
+                        .WithMany("Sellers")
                         .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618

@@ -38,15 +38,15 @@ namespace UdemyMVC.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("SallerId");
+                    b.Property<int?>("SellerId");
 
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SallerId");
+                    b.HasIndex("SellerId");
 
-                    b.ToTable("SalesRecords");
+                    b.ToTable("SalesRecord");
                 });
 
             modelBuilder.Entity("UdemyMVC.Models.Seller", b =>
@@ -68,20 +68,20 @@ namespace UdemyMVC.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Saller");
+                    b.ToTable("Seller");
                 });
 
             modelBuilder.Entity("UdemyMVC.Models.SalesRecord", b =>
                 {
-                    b.HasOne("UdemyMVC.Models.Seller", "Saller")
+                    b.HasOne("UdemyMVC.Models.Seller")
                         .WithMany("Sales")
-                        .HasForeignKey("SallerId");
+                        .HasForeignKey("SellerId");
                 });
 
             modelBuilder.Entity("UdemyMVC.Models.Seller", b =>
                 {
-                    b.HasOne("UdemyMVC.Models.Department")
-                        .WithMany("Sallers")
+                    b.HasOne("UdemyMVC.Models.Department", "Department")
+                        .WithMany("Sellers")
                         .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618

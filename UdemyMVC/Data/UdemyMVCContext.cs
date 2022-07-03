@@ -9,16 +9,17 @@ namespace UdemyMVC.Data
 {
     public class UdemyMVCContext : DbContext
     {
+        
         public UdemyMVCContext (DbContextOptions<UdemyMVCContext> options)
             : base(options)
         {
         }
 
         public DbSet<Department> Department { get; set; }
-                
-        public DbSet<Seller> Saller { get; set; }
 
-        public DbSet<SalesRecord> SalesRecords { get; set; }
+        public DbSet<Seller> Seller { get; set; }
+
+        public DbSet<SalesRecord> SalesRecord { get; set; }
     }
 
 }

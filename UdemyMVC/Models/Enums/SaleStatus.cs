@@ -3,7 +3,7 @@
     public enum SaleStatus : int
     {
         Pending =0,
-        Billd = 1,
-        Canceled = 2
+        Billed = 1,
+        Canceled = 2 
     }
 }

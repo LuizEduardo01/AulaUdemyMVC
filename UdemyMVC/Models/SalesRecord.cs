@@ -9,8 +9,8 @@ namespace UdemyMVC.Models
         public DateTime Date { get; set; }
         public double Amonth { get; set; }
         public SaleStatus Status { get; set; }
-        public Seller Saller { get; set; }
-
+        public Seller Seller { get; }
+       
         public SalesRecord() 
         {
         }
@@ -21,7 +21,7 @@ namespace UdemyMVC.Models
             Date = date;
             Amonth = amonth;
             Status = status;
-            Saller = seller;
+            Seller = seller;
         }
     }
 }

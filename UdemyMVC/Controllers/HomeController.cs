@@ -17,7 +17,7 @@ namespace UdemyMVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Salles web MVC app from c# Couser";
+            ViewData["Message"] = "Sales web MVC app from c# Couser";
             ViewData["email"] = "dudabyte@duda.com";
 
             return View();
