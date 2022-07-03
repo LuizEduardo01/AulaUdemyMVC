@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UdemyMVC.Models;
 
-namespace UdemyMVC.Data
+namespace UdemyMVC.Models
 {
     public class UdemyMVCContext : DbContext
     {

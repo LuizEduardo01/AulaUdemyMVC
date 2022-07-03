@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using UdemyMVC.Models;
+using UdemyMVC.Services;
 using UdemyMVC.Data;
 
 namespace UdemyMVC
@@ -41,6 +40,7 @@ namespace UdemyMVC
                      builder.MigrationsAssembly("UdemyMVC")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
