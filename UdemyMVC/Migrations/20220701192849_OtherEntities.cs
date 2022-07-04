@@ -56,7 +56,7 @@ namespace UdemyMVC.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_SalesRecord_SellerId",
                 table: "SalesRecord",
-                column: "SallerId");
+                column: "SellerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Seller_DepartmentId",

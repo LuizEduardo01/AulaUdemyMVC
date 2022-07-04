@@ -9,7 +9,7 @@ namespace UdemyMVC.Models
         public DateTime Date { get; set; }
         public double Amonth { get; set; }
         public SaleStatus Status { get; set; }
-        public Seller Seller { get; }
+        public Seller Seller { get; set; }
        
         public SalesRecord() 
         {
