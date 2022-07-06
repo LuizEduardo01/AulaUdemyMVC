@@ -16,7 +16,7 @@ namespace UdemyMVC.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    BirthDadte = table.Column<DateTime>(nullable: false),
+                    BirthDate = table.Column<DateTime>(nullable: false),
                     BaseSalary = table.Column<double>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: true)
                 },

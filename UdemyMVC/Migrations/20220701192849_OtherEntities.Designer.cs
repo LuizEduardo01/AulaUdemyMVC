@@ -58,7 +58,7 @@ namespace UdemyMVC.Migrations
 
                     b.Property<double>("BaseSalary");
 
-                    b.Property<DateTime>("BirthDadte");
+                    b.Property<DateTime>("BirthDate");
 
                     b.Property<int?>("DepartmentId");
 

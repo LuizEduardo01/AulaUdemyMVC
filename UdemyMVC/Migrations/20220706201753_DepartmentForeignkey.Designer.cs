@@ -9,7 +9,7 @@ using UdemyMVC.Models;
 namespace UdemyMVC.Migrations
 {
     [DbContext(typeof(UdemyMVCContext))]
-    [Migration("20220704212039_DepartmentForeignkey")]
+    [Migration("20220706201753_DepartmentForeignkey")]
     partial class DepartmentForeignkey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace UdemyMVC.Migrations
 
                     b.Property<double>("BaseSalary");
 
-                    b.Property<DateTime>("BirthDadte");
+                    b.Property<DateTime>("BirthDate");
 
                     b.Property<int>("DepartmentId");
 
