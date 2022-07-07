@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using UdemyMVC.Models;
 using UdemyMVC.Services;
 using UdemyMVC.Data;
+using System.Collections.Generic;
 
 namespace UdemyMVC
 {
@@ -47,6 +49,15 @@ namespace UdemyMVC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
+            var enUs = new CultureInfo("en-US");
+            var localizationOpitions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUs),
+                SupportedCultures = new List<CultureInfo> { enUs },
+                SupportedUICultures = new List<CultureInfo>{enUs}
+            };
+            app.UseRequestLocalization(localizationOpitions);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
