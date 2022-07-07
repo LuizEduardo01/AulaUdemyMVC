@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using UdemyMVC.Models;
 using UdemyMVC.Models.ViewModels;
 using UdemyMVC.Services;
+using UdemyMVC.Services.Excepitons;
+using UdemyMVC.Services.Exceptions;
 
 namespace UdemyMVC.Controllers
 {
@@ -71,6 +74,44 @@ namespace UdemyMVC.Controllers
             }
 
             return View(obj);
+        }
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindById(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            List<Department> departments = _departmentService.FindAll();
+            SellerformViewModel viewModel = new SellerformViewModel { Seller = obj, Departments = departments };
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if(id != seller.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _sellerService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(NotFoundException)
+            {
+                return NotFound();
+            }
+            catch(DbConcurrencyException)
+            {
+                return BadRequest();
+            }
         }
 
 
