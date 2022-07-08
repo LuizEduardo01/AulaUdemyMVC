@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+<<<<<<< HEAD
 using System.Threading.Tasks;
+=======
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
 using UdemyMVC.Models;
 using UdemyMVC.Models.ViewModels;
 using UdemyMVC.Services;
@@ -20,6 +23,7 @@ namespace UdemyMVC.Controllers
             _sellerService = sellerService;
             _departmentService = departmentService;
         }
+<<<<<<< HEAD
         public async Task<IActionResult> Index()
         {
             var list = await _sellerService.FindAllAsync();
@@ -28,11 +32,22 @@ namespace UdemyMVC.Controllers
         public async Task<IActionResult> Create()
         {
             var departments = await _departmentService.FindAllAsync();
+=======
+        public IActionResult Index()
+        {
+            var list = _sellerService.FindAll();
+            return View(list);
+        }
+        public IActionResult Create()
+        {
+            var departments = _departmentService.FindAll();
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
             var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Create(Seller seller)
         {
             if (!ModelState.IsValid)
@@ -45,12 +60,30 @@ namespace UdemyMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Delete(int? id)
+=======
+        public IActionResult Create(Seller seller)
+        {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+            _sellerService.Insert(seller);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Delete(int? id)
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
         {
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
+<<<<<<< HEAD
             var obj = await _sellerService.FindByIdAsync(id.Value);
+=======
+            var obj = _sellerService.FindById(id.Value);
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
             if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
@@ -59,46 +92,79 @@ namespace UdemyMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Delete(int id)
         {
             await _sellerService.RemoveAsync(id);
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Details(int? id)
+=======
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Details(int? id)
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
         {
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
+<<<<<<< HEAD
             var obj = await _sellerService.FindByIdAsync(id.Value);
+=======
+            var obj = _sellerService.FindById(id.Value);
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
             if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
             return View(obj);
         }
+<<<<<<< HEAD
         public async Task<IActionResult> Edit(int? id)
+=======
+        public IActionResult Edit(int? id)
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
         {
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
+<<<<<<< HEAD
             var obj = await _sellerService.FindByIdAsync(id.Value);
+=======
+            var obj = _sellerService.FindById(id.Value);
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
             if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
+<<<<<<< HEAD
             List<Department> departments = await _departmentService.FindAllAsync();
+=======
+            List<Department> departments = _departmentService.FindAll();
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
             SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
             return View(viewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Edit(int id, Seller seller)
         {
             if (!ModelState.IsValid)
             {
                 var departments = await _departmentService.FindAllAsync();
+=======
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel);
             }
@@ -108,7 +174,11 @@ namespace UdemyMVC.Controllers
             }
             try
             {
+<<<<<<< HEAD
                 await _sellerService.UpdateAsync(seller);
+=======
+                _sellerService.Update(seller);
+>>>>>>> 6e5cc5f9629c98961ffd41e0fc720c309fb2b781
                 return RedirectToAction(nameof(Index));
             }
             catch (ApplicationException e)
